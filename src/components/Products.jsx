@@ -2,7 +2,7 @@ import React from "react";
 
 import Card from "./Card";
 
-const Products = ({ products }) => {
+const Products = ({ products, addItem }) => {
   return (
     <div className="row center align center block ">
       {!products.length ? (
@@ -10,7 +10,9 @@ const Products = ({ products }) => {
           <h1>No hay datos</h1>
         </div>
       ) : (
-        products.map((el, idx) => <Card key={idx} products={el} />)
+        products.map((el, idx) => (
+          <Card key={idx} products={el} addItem={addItem} />
+        ))
       )}
     </div>
   );

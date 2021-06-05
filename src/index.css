@@ -27,10 +27,13 @@ a {
   transition: 0.3s;
   width: 220px;
   height: auto;
+  cursor: pointer;
 }
 
 .card:hover {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  width: 230px;
+  height: auto;
 }
 
 .controls-container {
@@ -42,11 +45,18 @@ a {
 .controls {
   border-start-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
+
   display: flex;
   justify-content: flex-end;
   padding: 0.3em;
   color: #fff;
   background-color: rgb(220, 20, 20);
+  cursor: pointer;
+}
+
+.controls:hover {
+  transition: 0.3s;
+  background-color: rgb(20, 130, 220);
 }
 
 .footer {

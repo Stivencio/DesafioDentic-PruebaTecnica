@@ -1,10 +1,10 @@
 import React from "react";
 
-const Cart = () => {
+const Cart = ({ cartItems }) => {
   return (
     <div className="row evenly align center block ">
       <h1>Cart items</h1>
-      <h2>cart is empty</h2>
+      {!cartItems.length ? <h2>cart is empty</h2> : <h2>cart exist</h2>}
     </div>
   );
 };
