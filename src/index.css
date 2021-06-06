@@ -45,7 +45,6 @@ a {
 .controls {
   border-start-end-radius: 0.5rem;
   border-end-start-radius: 0.5rem;
-
   display: flex;
   justify-content: flex-end;
   padding: 0.3em;
@@ -108,4 +107,17 @@ a {
 
 .container-right {
   margin-right: 60px;
+}
+
+.cart {
+  display: flex;
+  justify-content: space-evenly;
+}
+.cart-right {
+  display: flex;
+}
+
+hr {
+  height: 1px;
+  background-color: rgb(0, 0, 0);
 }

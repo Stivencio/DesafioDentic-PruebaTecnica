@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Cart from "../assets/cart.svg";
 import Logo from "../assets/logo.png";
+import { handleAdd } from "../utils/functions";
 
-const Card = ({ products, addItem }) => {
+const Card = ({ products, cart, setCart, handleDetails }) => {
   //convertir precio a CLP
   const formatter = new Intl.NumberFormat("es-CL", {
     style: "currency",
@@ -10,10 +11,13 @@ const Card = ({ products, addItem }) => {
   });
 
   return (
-    <div className="card">
+    <div onClick={(e) => handleDetails(e, products.id)} className="card">
       <div className="controls-container">
-        <div onClick={addItem} className="controls">
-          <img src={Cart} alt="Cerveza" width="25" />
+        <div
+          onClick={() => handleAdd(products, cart, setCart)}
+          className="controls verify"
+        >
+          <img src={Cart} alt="cart" width="25" className="verify" />
         </div>
       </div>
       <img src={Logo} alt={products.name} width="80%" height="auto" />

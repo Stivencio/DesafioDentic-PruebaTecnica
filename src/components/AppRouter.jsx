@@ -8,7 +8,6 @@ import {
 import Header from "./Header";
 import Products from "./Products";
 import Cart from "./Cart";
-import Details from "./Details";
 
 export const AppRouter = () => {
   return (
@@ -18,7 +17,6 @@ export const AppRouter = () => {
         <Switch>
           <Route exact path="/" component={Products} />
           <Route exact path="/cart" component={Cart} />
-          <Route exact path="/details" component={Details} />
           <Redirect to="/" />
         </Switch>
       </div>

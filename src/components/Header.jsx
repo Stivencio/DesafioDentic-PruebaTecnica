@@ -1,21 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import Logo from "../assets/logo.png";
 import Cart from "../assets/cart.svg";
 
 const Header = () => {
   return (
     <header className="row evenly align center block ">
-      <a href="#/store">
+      <Link to="/">
         <h1>Tienda</h1>
-      </a>
-      <a href="#/store">
+      </Link>
+      <Link to="/">
         {" "}
         <img src={Logo} alt="" width="150"></img>{" "}
-      </a>
-      <a href="#/cart">
+      </Link>
+      <Link to="/cart">
         {" "}
         <img src={Cart} alt="" width=""></img>{" "}
-      </a>
+      </Link>
     </header>
   );
 };
