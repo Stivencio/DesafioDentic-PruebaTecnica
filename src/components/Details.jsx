@@ -1,26 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../assets/logo.png";
-import { handleAdd } from "../utils/functions";
+import { handleAdd, formatter } from "../functions/functions";
 
 const Details = ({ active: p, cart, setCart, setActive }) => {
   return (
-    <div className="row center align center block ">
-      <button onClick={() => setActive(null)}>volver</button>
-      <div className="container-right">
-        <img src={Logo} alt="asdas"></img>
-        <h2>Descripción</h2>
-      </div>
-      <div className="container-left">
-        <h1>{p.name}</h1>
-        <p>{p.store}</p>
-        <p>{p["units-in-pack"]}</p>
-        <p>{p.price}</p>
-        <div onClick={() => handleAdd(p, cart, setCart)} className="controls">
-          Agregar al carrito
+    <>
+      <div className="flex-column">
+        <div onClick={() => setActive(null)} className="div-btn">
+          Volver
         </div>
-        <p>{p.description}</p>
+        <div className="card2">
+          <img src={Logo} alt="Denim Jeans" />
+          <div>
+            <div className="div-end">
+              <h2>{p.store}</h2>
+            </div>
+          </div>
+          <h1>{p.name}</h1>
+          <p className="price">{formatter.format(p.price)}</p>
+          {p["units-in-pack"] <= 1 ? (
+            <p>{p["units-in-pack"]} unidad</p>
+          ) : (
+            <p>{p["units-in-pack"]} pack</p>
+          )}
+          <p>{p.description}</p>
+          <p>
+            <button onClick={() => handleAdd(p, cart, setCart)}>
+              Add to Cart
+            </button>
+          </p>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

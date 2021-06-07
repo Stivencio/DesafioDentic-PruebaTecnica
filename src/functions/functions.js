@@ -1,5 +1,3 @@
-const cartData = JSON.parse(localStorage.getItem("cart"));
-
 //agregar al carrito
 export const handleAdd = (prod,cart,setCart) => {
     const exist = cart.find((el) => el.id === prod.id);
@@ -13,11 +11,10 @@ export const handleAdd = (prod,cart,setCart) => {
       setCart(data)
 
     localStorage.setItem("cart", JSON.stringify(data));
-    console.log(exist,!!exist)
   };
 
 
-  // - cantidad
+  // restar al carrito
 export const handleSubstract = (prod,cart,setCart) => {
   const exist = cart.find((el) => el.id === prod.id);
   // exist ? console.log("existe") : console.log("no existe");
@@ -32,7 +29,6 @@ export const handleSubstract = (prod,cart,setCart) => {
 };
 
 
-
 //eliminar
 export const handleDelete = (prod,cart,setCart) => {
   const exist = cart.find((el) => el.id === prod.id);
@@ -42,3 +38,10 @@ export const handleDelete = (prod,cart,setCart) => {
   setCart(data)
   localStorage.setItem("cart", JSON.stringify(data));
 };
+
+
+//Cambiar a CLP
+export const formatter = new Intl.NumberFormat("es-CL", {
+  style: "currency",
+  currency: "CLP",
+});

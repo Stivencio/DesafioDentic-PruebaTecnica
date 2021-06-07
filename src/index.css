@@ -16,6 +16,11 @@ a {
   text-decoration: none;
 }
 
+hr {
+  height: 1px;
+  background-color: rgb(0, 0, 0);
+}
+
 /* CARDS */
 .container {
   padding: 2px 16px;
@@ -95,7 +100,7 @@ a {
 }
 
 .block {
-  background-color: rgb(219, 149, 149);
+  background-color: rgb(255, 255, 255);
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
@@ -117,7 +122,139 @@ a {
   display: flex;
 }
 
-hr {
-  height: 1px;
-  background-color: rgb(0, 0, 0);
+/* div-table */
+
+.table-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.table {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(149, 197, 219);
+  padding: 0rem;
+  margin: 0.5rem;
+  border-radius: 0.5rem;
+  /* max-width: 1200px; */
+}
+.table.container {
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: rgb(149, 219, 196);
+}
+.table.store {
+  flex-direction: row;
+  justify-content: center;
+  background-color: rgb(188, 149, 219);
+}
+.table.subtotal {
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: rgb(219, 209, 149);
+}
+.table.total {
+  background-color: rgb(180, 219, 149);
+}
+
+.table-btn {
+  background-color: #000000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 05em;
+}
+
+/*table-prod*/
+.divTable {
+  display: table;
+  width: 100%;
+}
+
+.divTableRow {
+  display: table-row;
+}
+
+.divTableCell {
+  display: table-cell;
+  padding: 3px 10px;
+}
+
+.divTableBody {
+  display: table-row-group;
+}
+
+/* detalles */
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.div-btn {
+  margin-bottom: 10px;
+  width: 20%;
+  padding: 1%;
+  border-radius: 05em;
+  background-color: rgb(149, 219, 172);
+}
+
+.div-btn:hover {
+  transition: 0.3s;
+  background-color: rgb(219, 149, 166);
+  cursor: pointer;
+}
+
+.card2 {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+  border-radius: 5em;
+}
+
+.price {
+  color: rgb(181, 30, 30);
+  font-size: 22px;
+}
+.card2 div {
+  display: flex;
+  justify-content: center;
+}
+
+.div-end {
+  margin-top: 10px;
+  width: 20%;
+  border-radius: 05em;
+  background-color: rgb(188, 149, 219);
+}
+.card2 img {
+  width: 40%;
+}
+.card2 button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 50%;
+  font-size: 18px;
+  border-radius: 5em;
+}
+
+.card2 button:hover {
+  opacity: 0.7;
+}
+
+/* .img-header:hover {
+} */

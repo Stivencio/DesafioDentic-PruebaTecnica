@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import Cart from "../assets/cart.svg";
 import Logo from "../assets/logo.png";
-import { handleAdd } from "../utils/functions";
+import { handleAdd } from "../functions/functions";
 
 const Card = ({ products, cart, setCart, handleDetails }) => {
   //convertir precio a CLP

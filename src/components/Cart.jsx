@@ -1,5 +1,13 @@
 import React, { useState } from "react";
-import { handleAdd, handleSubstract, handleDelete } from "../utils/functions";
+import {
+  handleAdd,
+  handleSubstract,
+  handleDelete,
+  formatter,
+} from "../functions/functions";
+import Add from "../assets/add.svg";
+import Sub from "../assets/sub.svg";
+import Delete from "../assets/delete.svg";
 
 const Cart = () => {
   const cartData = JSON.parse(localStorage.getItem("cart"));
@@ -22,95 +30,117 @@ const Cart = () => {
     return { category: cat.store, list: filtered };
   });
 
-  const xd = cartFiltered.map((el) => el.list.map((el) => el));
-  console.log(xd);
+  //subtotal
+  // const subtotal = cartFiltered.map((el) => el.list);
+  // console.log(subtotal);
+  // console.log(subtotal.map((el) => el));
+
+  // const xd = cartFiltered.map((el) => el.list.map((el) => el));
+  // console.log(xd);
 
   return (
     <>
       <div>
-        <h1>Cart items</h1>
+        <h1>Tu carrito</h1>
       </div>
-      <div className="block">
-        {cart != null && cart.length >= 1 ? (
-          <>
-            <h2>cart exist</h2>
-            {cartFiltered.map(
-              (el, idx) => (
+      <div className="table-center">
+        <div className="table">
+          {cart != null && cart.length >= 1 ? (
+            <>
+              {cartFiltered.map((el, idx) => (
                 <div key={idx}>
-                  <h1>{el.category}</h1>
+                  <div className="table store">
+                    <h2>{el.category}</h2>
+                  </div>
                   {el.list.map((el) => (
                     <div key={el.id} className="cart">
-                      <div>
-                        <h2>{el.name}</h2>
+                      {/* Tabla productos */}
+                      <div className="table container">
+                        <div className="divTable">
+                          <div className="divTableBody">
+                            <div className="divTableRow">
+                              <div className="divTableCell">{el.name}</div>
+                              <div className="divTableCell">
+                                <button
+                                  onClick={() =>
+                                    handleSubstract(el, cart, setCart)
+                                  }
+                                  disabled={el.qty === 1 && true}
+                                >
+                                  <img
+                                    src={Sub}
+                                    alt="Substract"
+                                    width="20px"
+                                  ></img>{" "}
+                                </button>
+                              </div>
+                              <div className="divTableCell">{el.qty}</div>
+                              <div className="divTableCell">
+                                <button
+                                  onClick={() => handleAdd(el, cart, setCart)}
+                                >
+                                  <img src={Add} alt="Add" width="20px"></img>{" "}
+                                </button>
+                              </div>
+                              <div className="divTableCell">
+                                <button
+                                  onClick={() =>
+                                    handleDelete(el, cart, setCart)
+                                  }
+                                >
+                                  <img
+                                    src={Delete}
+                                    alt="Delete"
+                                    width="20px"
+                                  ></img>{" "}
+                                </button>
+                              </div>
+                              <div className="divTableCell">
+                                {formatter.format(el.price)}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
-                      <div>
-                        <button onClick={() => handleAdd(el, cart, setCart)}>
-                          +
-                        </button>
-                        <p>{el.qty}</p>
-                        <button
-                          onClick={() => handleSubstract(el, cart, setCart)}
-                          disabled={el.qty === 1 && true}
-                        >
-                          -
-                        </button>
-                        <button onClick={() => handleDelete(el, cart, setCart)}>
-                          delete
-                        </button>
-                        <h3>{el.price}</h3>
-                      </div>
+
+                      {/* Tabla productos*/}
                     </div>
                   ))}
+                  <div className="table subtotal">
+                    <div>
+                      <h4>Subtotal</h4>
+                    </div>
+                    <div>
+                      <h4>
+                        {formatter.format(
+                          cart.reduce((acc, el) => acc + el.price * el.qty, 0)
+                        )}
+                      </h4>
+                    </div>
+                  </div>
                 </div>
-              )
+              ))}
 
-              // el.list.map((el) => (
-              //   <>
-
-              //     <div key={el.id} className="cart">
-              //       <div>
-              //         <h2>{el.name}</h2>
-              //       </div>
-              //       <div>
-              //         <button>+</button>
-              //         <button>-</button>
-              //         <button>delete</button>
-              //         <h3>{el.price}</h3>
-              //       </div>
-              //     </div>
-              //   </>
-              // ))
-            )}
-
-            {/* {cart.map((el) => (
-              <div key={el.id} className="cart">
+              <div className="table total">
                 <div>
-                  <h2>{el.name}</h2>
+                  <h2>Total a Pagar</h2>
                 </div>
                 <div>
-                  <button>+</button>
-                  <button>-</button>
-                  <button>delete</button>
-                  <h3>{el.price}</h3>
+                  <h2>
+                    {formatter.format(
+                      cart.reduce((acc, el) => acc + el.price * el.qty, 0)
+                    )}
+                  </h2>
+                </div>
+                <div>
+                  <button className="table-btn">PAGAR</button>
                 </div>
               </div>
-            ))} */}
-
-            <hr />
-            <div className="row evenly">
-              <h2>Subtotal</h2>
-              <h3>10.000</h3>
-            </div>
-            <hr />
-            <div className="row evenly">
-              <h2>Total</h2>
-              <h3>{cart.reduce((acc, el) => acc + el.price * el.qty, 0)}</h3>
-              <button>PAGAR</button>
-            </div>
-          </>
-        ) : (
-          <h2>cart is empty</h2>
-        )}
+            </>
+          ) : (
+            <h2>El carrito está vacío</h2>
+          )}
+        </div>
       </div>
     </>
   );
