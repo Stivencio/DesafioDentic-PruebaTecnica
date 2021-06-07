@@ -20,7 +20,7 @@ const Card = ({ products, cart, setCart, handleDetails }) => {
           <img src={Cart} alt="cart" width="25" className="verify" />
         </div>
       </div>
-      <img src={Logo} alt={products.name} width="80%" height="auto" />
+      <img src={products.image} alt={products.name} width="80%" height="auto" />
       <div className="container">
         <b>{products.name}</b>
         {products["units-in-pack"] <= 1 ? (
