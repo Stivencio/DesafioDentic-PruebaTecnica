@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../assets/logo.png";
+// import Logo from "../assets/logo.png";
 import { handleAdd, formatter } from "../functions/functions";
 
 const Details = ({ active: p, cart, setCart, setActive }) => {
@@ -10,7 +10,7 @@ const Details = ({ active: p, cart, setCart, setActive }) => {
           Volver
         </div>
         <div className="card2">
-          <img src={Logo} alt="Denim Jeans" />
+          <img src={p.image} alt={p.name} />
           <div>
             <div className="div-end">
               <h2>{p.store}</h2>
